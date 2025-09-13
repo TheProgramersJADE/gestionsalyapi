@@ -1,0 +1,32 @@
+### Listar todos los servicios
+GET http://localhost:8080/servicios
+Content-Type: application/json
+
+### Obtener un servicio por ID
+GET http://localhost:8080/servicios/2
+Content-Type: application/json
+
+### Crear un nuevo servicio
+POST http://localhost:8080/servicios
+Content-Type: application/json
+
+{
+  "nombre_servicio": "Corte de cabello premium",
+  "descripcion": "Incluye lavado y peinado",
+  "duracion": 45,
+  "precio": 25.00
+}
+
+### Actualizar un servicio
+PUT http://localhost:8080/servicios/1
+Content-Type: application/json
+
+{
+  "nombre_servicio": "Corte de cabello premium",
+  "descripcion": "Incluye lavado y peinado",
+  "duracion": 45,
+  "precio": 25.00
+}
+
+### Eliminar un servicio
+DELETE http://localhost:8080/servicios/1
