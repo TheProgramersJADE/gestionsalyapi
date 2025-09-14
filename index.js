@@ -4,14 +4,16 @@ require('dotenv').config();
 const citasRoutes = require('./src/routes/citas.router');
 const resennasRoutes = require('./src/routes/resennas.router');
 const serviciosRoutes = require('./src/routes/servicios.router');
-const { pool } = require('./src/models/mysql'); // ajusta la ruta si es necesario
+const servicioTrabajadorRoutes = require('./src/routes/servicioTrabajador.router');
+const { pool } = require('./src/models/mysql'); 
 
 require('dotenv').config();
 
 const app = express();
 const port = parseInt(process.env.PORT) || process.argv[3] || 8080;
 
-app.use(express.json()); // ← Para recibir JSON
+//Middleware para recibir JSON
+app.use(express.json()); 
 app.use(express.static(path.join(__dirname, 'public')))
    .set('views', path.join(__dirname, 'views'))
    .set('view engine', 'ejs');
@@ -25,14 +27,14 @@ app.get('/api', (req, res) => {
   res.json({ msg: 'GESTION DE SALY ' });
 });
 
-// Rutas de servicios (CRUD)
+// Rutas de los CRUD
 app.use('/servicios', serviciosRoutes);
 app.use('/resennas', resennasRoutes);
 app.use('/citas', citasRoutes);
+app.use('/servicio-trabajador', servicioTrabajadorRoutes); 
 
-console.log('🚀 Starting server...')
 
-
+// Par asaber si la coneccion a la base funciona
 app.get('/test-db', async (req, res) => {
   try {
     const conn = await pool.getConnection();
@@ -45,6 +47,12 @@ app.get('/test-db', async (req, res) => {
   }
 });
 
+// Middleware para rutas no encontradas
+app.use((req, res) => {
+  res.status(404).send('Ruta no encontrada');
+});
+
+// Iniciar servidor
 app.listen(port, () => {
   console.log(`✅ Listening on http://localhost:${port}`);
 });

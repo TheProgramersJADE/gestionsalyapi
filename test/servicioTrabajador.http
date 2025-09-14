@@ -1,0 +1,35 @@
+# Pruebas Servicio-Trabajador
+
+# GET todos
+###
+GET http://localhost:8080/servicio-trabajador
+Accept: application/json
+
+# GET por ID
+###
+GET http://localhost:8080/servicio-trabajador/1
+Accept: application/json
+
+# POST crear
+###
+POST http://localhost:8080/servicio-trabajador
+Content-Type: application/json
+
+{
+  "id_servicio": 2,
+  "id_trabajador": 3
+}
+
+# PUT actualizar
+###
+PUT http://localhost:8080/servicio-trabajador/1
+Content-Type: application/json
+
+{
+  "id_servicio": 3,
+  "id_trabajador": 2
+}
+
+# DELETE eliminar
+###
+DELETE http://localhost:8080/servicio-trabajador/1
