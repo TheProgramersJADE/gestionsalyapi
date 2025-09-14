@@ -1,0 +1,35 @@
+### Listar todas las reseñas
+GET http://localhost:8080/resennas
+Content-Type: application/json
+
+### Obtener una reseña por ID
+GET http://localhost:8080/resennas/2
+Content-Type: application/json
+
+### Crear una nueva reseña
+POST http://localhost:8080/resennas
+Content-Type: application/json
+
+{
+  "nombre_cliente": "Maria Lopez",
+  "nombre_trabajador": "Maricela Gomez",
+  "calificacion": 5,
+  "comentario": "Excelente servicio, ¡muy profesional!",
+  "fecha": "2025-10-27"
+}
+
+### Actualizar una reseña
+PUT http://localhost:8080/resennas/1
+Content-Type: application/json
+
+{
+  "nombre_cliente": "Ana Looopez",
+  "nombre_trabajador": "Maria Gomez",
+  "calificacion": 4,
+  "comentario": "El servicio fue bueno, pero la espera fue un poco larga.",
+  "fecha": "2025-10-27"
+}
+
+### Eliminar una reseña
+DELETE http://localhost:8080/resennas/2
+Content-Type: application/json

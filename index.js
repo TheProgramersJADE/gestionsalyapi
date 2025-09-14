@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require('path');
 require('dotenv').config();
+const citasRoutes = require('./src/routes/citas.router');
+const resennasRoutes = require('./src/routes/resennas.router');
 const serviciosRoutes = require('./src/routes/servicios.router');
 const { pool } = require('./src/models/mysql'); // ajusta la ruta si es necesario
 
@@ -25,6 +27,10 @@ app.get('/api', (req, res) => {
 
 // Rutas de servicios (CRUD)
 app.use('/servicios', serviciosRoutes);
+app.use('/resennas', resennasRoutes);
+app.use('/citas', citasRoutes);
+
+console.log('🚀 Starting server...')
 
 
 app.get('/test-db', async (req, res) => {

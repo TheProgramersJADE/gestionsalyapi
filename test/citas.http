@@ -1,0 +1,35 @@
+### Listar todas las citas
+GET http://localhost:8080/citas
+Content-Type: application/json
+
+### Obtener una cita por ID
+GET http://localhost:8080/citas/1
+Content-Type: application/json
+
+### Crear una nueva cita
+POST http://localhost:8080/citas
+Content-Type: application/json
+
+{
+  "nombre_cliente": "Juan melendez",
+  "telefono_cliente": "555-1234",
+  "fecha_hora": "2025-10-27 10:30:00",
+  "nombre_trabajador": "Maria Gomez",
+  "id_servicio": 2
+}
+
+### Actualizar una cita
+PUT http://localhost:8080/citas/1
+Content-Type: application/json
+
+{
+  "nombre_cliente": "Juan Perez",
+  "telefono_cliente": "555-1234",
+  "fecha_hora": "2025-10-27 11:00:00",
+  "nombre_trabajador": "Maria Gomez",
+  "id_servicio": 2
+}
+
+### Eliminar una cita
+DELETE http://localhost:8080/citas/1
+Content-Type: application/json
