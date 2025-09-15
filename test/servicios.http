@@ -1,14 +1,19 @@
-### Listar todos los servicios
+// Listar todos los servicios
+###
 GET http://localhost:8080/servicios
 Content-Type: application/json
 
-### Obtener un servicio por ID
-GET http://localhost:8080/servicios/2
+// Obtener un servicio por ID
+###
+GET http://localhost:8080/servicios/6
 Content-Type: application/json
 
-### Crear un nuevo servicio
+# Crear un nuevo servicio
+# Solo admin (token requerido)
+###
 POST http://localhost:8080/servicios
 Content-Type: application/json
+Authorization: Bearer TU_TOKEN_AQUI
 
 {
   "nombre_servicio": "Corte de cabello premium",
@@ -17,16 +22,23 @@ Content-Type: application/json
   "precio": 25.00
 }
 
-### Actualizar un servicio
+# Actualizar un servicio existente
+# Solo admin (token requerido)
+###
 PUT http://localhost:8080/servicios/1
 Content-Type: application/json
+Authorization: Bearer TU_TOKEN_AQUI
 
 {
-  "nombre_servicio": "Corte de cabello premium",
-  "descripcion": "Incluye lavado y peinado",
-  "duracion": 45,
-  "precio": 25.00
+  "nombre_servicio": "Corte de cabello premium actualizado",
+  "descripcion": "Incluye lavado, corte y peinado",
+  "duracion": 50,
+  "precio": 30.00
 }
 
-### Eliminar un servicio
+# Eliminar un servicio
+# Solo admin (token requerido)
+###
 DELETE http://localhost:8080/servicios/1
+Content-Type: application/json
+Authorization: Bearer TU_TOKEN_AQUI
