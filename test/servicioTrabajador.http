@@ -1,28 +1,30 @@
 # Pruebas Servicio-Trabajador
-
-# GET todos
-###
+# GET todos (Admin ve todo, Trabajador solo los suyos)
 GET http://localhost:8080/servicio-trabajador
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseUZsb3JlcyIsInJvbGVfaWQiOjIsImlhdCI6MTc1Nzg5MTA0MCwiZXhwIjoxNzU3OTE5ODQwfQ.NzesdsMdP6I0hBk7C06Jl1V_kM0Zh0o6X0znlljt9tg
 Accept: application/json
 
+###
 # GET por ID
-###
-GET http://localhost:8080/servicio-trabajador/1
+GET http://localhost:8080/servicio-trabajador/5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseUZsb3JlcyIsInJvbGVfaWQiOjIsImlhdCI6MTc1Nzg5MTA0MCwiZXhwIjoxNzU3OTE5ODQwfQ.NzesdsMdP6I0hBk7C06Jl1V_kM0Zh0o6X0znlljt9tg
 Accept: application/json
 
-# POST crear
 ###
+# POST crear un registro de Servicio-Trabajador
+# (Solo trabajador puede usarse, se asigna el servicio a sí mismo)
 POST http://localhost:8080/servicio-trabajador
+Authorization: Bearer <TOKEN_TRABAJADOR>
 Content-Type: application/json
 
 {
-  "id_servicio": 2,
-  "id_trabajador": 3
+  "id_servicio": 3
 }
 
-# PUT actualizar
 ###
+# PUT actualizar (Solo Admin)
 PUT http://localhost:8080/servicio-trabajador/1
+Authorization: Bearer <TOKEN_ADMIN>
 Content-Type: application/json
 
 {
@@ -30,6 +32,7 @@ Content-Type: application/json
   "id_trabajador": 2
 }
 
-# DELETE eliminar
 ###
-DELETE http://localhost:8080/servicio-trabajador/1
+# DELETE eliminar (Solo Admin)
+DELETE http://localhost:8080/servicio-trabajador/5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseUZsb3JlcyIsInJvbGVfaWQiOjIsImlhdCI6MTc1Nzg5MTA0MCwiZXhwIjoxNzU3OTE5ODQwfQ.NzesdsMdP6I0hBk7C06Jl1V_kM0Zh0o6X0znlljt9tg

@@ -1,8 +1,21 @@
 const model = require('../models/servicioTrabajador');
 
 exports.index = async (req, res) => {
-    const registros = await model.findAll();
-    res.json(registros);
+    try {
+      let registros;
+  
+      if (req.user.role_id === 2) {
+        // Solo trabajador: mostramos sus registros
+        registros = await model.findByTrabajador(req.user.id);
+      } else {
+        // Admin: ve todos
+        registros = await model.findAll();
+      }
+  
+      res.json(registros);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
   };
   
   exports.show = async (req, res) => {
@@ -13,12 +26,18 @@ exports.index = async (req, res) => {
   
   exports.store = async (req, res) => {
     try {
-      const result = await model.store(req.body);
-      res.status(201).json({ message: 'Registro creado', id: result.insertId });
+      const data = {
+        id_servicio: req.body.id_servicio,
+        id_trabajador: req.user.id   // <- esto viene del token
+      };
+      const result = await model.store(data);
+      res.status(201).json({ message: 'Servicio asignado', id: result.insertId });
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
   };
+  
+  
   
 
   exports.update = async (req, res) => {

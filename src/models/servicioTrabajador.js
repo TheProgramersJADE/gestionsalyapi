@@ -40,4 +40,15 @@ async function remove(id) {
   return result;
 }
 
-module.exports = { store, findAll, findById, update, remove };
+async function findByTrabajador(id_trabajador) {
+  const conn = await pool.getConnection();
+  const [rows] = await conn.query(
+    'SELECT * FROM servicios_trabajador WHERE id_trabajador = ?',
+    [id_trabajador]
+  );
+  conn.release();
+  return rows;
+}
+
+
+module.exports = { store, findAll, findById, update, remove, findByTrabajador };
