@@ -1,13 +1,16 @@
 ### Listar todas las reseñas
 GET http://localhost:8080/resennas
-Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseUZsb3JlcyIsInJvbGVfaWQiOjIsImlhdCI6MTc1Nzg5MTA0MCwiZXhwIjoxNzU3OTE5ODQwfQ.NzesdsMdP6I0hBk7C06Jl1V_kM0Zh0o6X0znlljt9tg
+Accept: application/json
 
 ### Obtener una reseña por ID
 GET http://localhost:8080/resennas/2
-Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseUZsb3JlcyIsInJvbGVfaWQiOjIsImlhdCI6MTc1Nzg5MTA0MCwiZXhwIjoxNzU3OTE5ODQwfQ.NzesdsMdP6I0hBk7C06Jl1V_kM0Zh0o6X0znlljt9tg
+Accept: application/json
 
 ### Crear una nueva reseña
 POST http://localhost:8080/resennas
+Authorization: Bearer <TOKEN_CLIENTE>
 Content-Type: application/json
 
 {
@@ -20,6 +23,7 @@ Content-Type: application/json
 
 ### Actualizar una reseña
 PUT http://localhost:8080/resennas/1
+Authorization: Bearer <TOKEN_ADMIN>
 Content-Type: application/json
 
 {
@@ -32,4 +36,4 @@ Content-Type: application/json
 
 ### Eliminar una reseña
 DELETE http://localhost:8080/resennas/2
-Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseUZsb3JlcyIsInJvbGVfaWQiOjIsImlhdCI6MTc1Nzg5MTA0MCwiZXhwIjoxNzU3OTE5ODQwfQ.NzesdsMdP6I0hBk7C06Jl1V_kM0Zh0o6X0znlljt9tg

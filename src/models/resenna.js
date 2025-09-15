@@ -1,5 +1,6 @@
 const { pool } = require('./mysql');
 
+
 // Crear una nueva reseña
 const storeResena = async ({ nombre_cliente, nombre_trabajador, calificacion, comentario, fecha }) => {
   const sql = `
@@ -71,4 +72,14 @@ const removeResena = async (id) => {
   }
 };
 
-module.exports = { storeResena, findAllResenas, findResenaById, updateResena, removeResena };
+async function findByResenna(id_servicio) {
+  const conn = await pool.getConnection();
+  const [rows] = await conn.query(
+    'SELECT * FROM servicios WHERE id_servicio = ?',
+    [id_servicio]
+  );
+  conn.release();
+  return rows;
+}
+
+module.exports = { storeResena, findAllResenas, findResenaById, updateResena, removeResena, findByResenna};
