@@ -1,25 +1,29 @@
 ### Listar todas las citas
 GET http://localhost:8080/citas
-Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseUZsb3JlcyIsInJvbGVfaWQiOjIsImlhdCI6MTc1Nzg5MTA0MCwiZXhwIjoxNzU3OTE5ODQwfQ.NzesdsMdP6I0hBk7C06Jl1V_kM0Zh0o6X0znlljt9tg
+Accept: application/json
 
 ### Obtener una cita por ID
 GET http://localhost:8080/citas/1
-Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseUZsb3JlcyIsInJvbGVfaWQiOjIsImlhdCI6MTc1Nzg5MTA0MCwiZXhwIjoxNzU3OTE5ODQwfQ.NzesdsMdP6I0hBk7C06Jl1V_kM0Zh0o6X0znlljt9tg
+Accept: application/json
 
 ### Crear una nueva cita
 POST http://localhost:8080/citas
+Authorization: Bearer <TOKEN_CLIENTE>
 Content-Type: application/json
 
 {
-  "nombre_cliente": "Juan melendez",
+  "nombre_cliente": "Sara",
   "telefono_cliente": "555-1234",
   "fecha_hora": "2025-10-27 10:30:00",
-  "nombre_trabajador": "Maria Gomez",
+  "nombre_trabajador": "Mariaaaa Gomez",
   "id_servicio": 2
 }
 
 ### Actualizar una cita
 PUT http://localhost:8080/citas/1
+Authorization: Bearer <TOKEN_TRABAJADOR>
 Content-Type: application/json
 
 {
@@ -32,4 +36,4 @@ Content-Type: application/json
 
 ### Eliminar una cita
 DELETE http://localhost:8080/citas/1
-Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseUZsb3JlcyIsInJvbGVfaWQiOjIsImlhdCI6MTc1Nzg5MTA0MCwiZXhwIjoxNzU3OTE5ODQwfQ.NzesdsMdP6I0hBk7C06Jl1V_kM0Zh0o6X0znlljt9tg

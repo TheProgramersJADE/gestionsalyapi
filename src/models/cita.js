@@ -71,4 +71,14 @@ const removeCita = async (id) => {
   }
 };
 
-module.exports = { storeCita, findAllCitas, findCitaById, updateCita, removeCita };
+async function findByCita(id_servicio) {
+  const conn = await pool.getConnection();
+  const [rows] = await conn.query(
+    'SELECT * FROM servicios WHERE id_servicio = ?',
+    [id_servicio]
+  );
+  conn.release();
+  return rows;
+}
+
+module.exports = { storeCita, findAllCitas, findCitaById, updateCita, removeCita, findByCita };
