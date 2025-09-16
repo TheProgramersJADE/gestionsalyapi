@@ -12,6 +12,19 @@ exports.show = async (req, res) => {
 };
 
 exports.store = async (req, res) => {
+  const { nombre_servicio, descripcion, duracion, precio } = req.body; 
+  const camposFaltantes = {};
+  if (!nombre_servicio) camposFaltantes.nombre_servicio = 'requerido';
+  if (!descripcion ) camposFaltantes.descripcion = 'requerido';
+  if (!duracion) camposFaltantes.duracion = 'requerido';
+  if (!precio) camposFaltantes.precio = 'requerido';
+
+  if (Object.keys(camposFaltantes).length > 0) {
+    return res.status(400).json({ 
+      error: 'Faltan campos obligatorios', 
+      camposFaltantes 
+    });
+  }
   try {
     const result = await model.store(req.body);
     res.status(201).json({ message: 'Servicio creado', id: result.id });
@@ -21,6 +34,19 @@ exports.store = async (req, res) => {
 };
 
 exports.update = async (req, res) => {
+  const { nombre_servicio, descripcion, duracion, precio } = req.body;
+  const camposFaltantes = {};
+  if (!nombre_servicio) camposFaltantes.nombre_servicio = 'requerido';
+  if (!descripcion) camposFaltantes.descripcion = 'requerido';
+  if (!duracion) camposFaltantes.duracion = 'requerido';
+  if (!precio) camposFaltantes.precio = 'requerido';
+
+  if (Object.keys(camposFaltantes).length > 0) {
+    return res.status(400).json({ 
+      error: 'Faltan campos obligatorios', 
+      camposFaltantes 
+    });
+  }
   try {
     const result = await model.update(req.params.id, req.body);
     res.json({ message: 'Servicio actualizado', result });

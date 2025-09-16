@@ -1,7 +1,7 @@
 # Pruebas Servicio-Trabajador
 # GET todos (Admin ve todo, Trabajador solo los suyos)
 GET http://localhost:8080/servicio-trabajador
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseUZsb3JlcyIsInJvbGVfaWQiOjIsImlhdCI6MTc1Nzg5MTA0MCwiZXhwIjoxNzU3OTE5ODQwfQ.NzesdsMdP6I0hBk7C06Jl1V_kM0Zh0o6X0znlljt9tg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwidXNlcm5hbWUiOiJqZW1pbWkiLCJyb2xlX2lkIjozLCJpYXQiOjE3NTgwMzk1MzgsImV4cCI6MTc1ODA2ODMzOH0.TI9BssaymoK1glp5bluy3AfaYB0FLCt47pjPxcpZO_c
 Accept: application/json
 
 ###
@@ -24,11 +24,11 @@ Content-Type: application/json
 ###
 # PUT actualizar (Solo Admin)
 PUT http://localhost:8080/servicio-trabajador/1
-Authorization: Bearer <TOKEN_ADMIN>
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwidXNlcm5hbWUiOiJqZW1pbWkiLCJyb2xlX2lkIjozLCJpYXQiOjE3NTgwMzk1MzgsImV4cCI6MTc1ODA2ODMzOH0.TI9BssaymoK1glp5bluy3AfaYB0FLCt47pjPxcpZO_c
 Content-Type: application/json
 
 {
-  "id_servicio": 3,
+  "id_servicio": 2,
   "id_trabajador": 2
 }
 

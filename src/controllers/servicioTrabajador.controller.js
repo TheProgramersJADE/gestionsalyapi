@@ -25,11 +25,23 @@ exports.index = async (req, res) => {
   };
   
   exports.store = async (req, res) => {
+    const { id_servicio } = req.body;
+    const id_trabajador = req.user.id; // viene del token
+  
+    // Validación de campos obligatorios
+    const camposFaltantes = {};
+    if (!id_servicio) camposFaltantes.id_servicio = 'requerido';
+    if (!id_trabajador) camposFaltantes.id_trabajador = 'requerido'
+    
+    if (Object.keys(camposFaltantes).length > 0) {
+      return res.status(400).json({
+        error: 'Faltan campos obligatorios',
+        camposFaltantes
+      });
+    }
+
     try {
-      const data = {
-        id_servicio: req.body.id_servicio,
-        id_trabajador: req.user.id   // <- esto viene del token
-      };
+      const data = { id_servicio, id_trabajador }; // reutilizamos las variables
       const result = await model.store(data);
       res.status(201).json({ message: 'Servicio asignado', id: result.insertId });
     } catch (error) {
@@ -41,6 +53,20 @@ exports.index = async (req, res) => {
   
 
   exports.update = async (req, res) => {
+    const { id_servicio, id_trabajador } = req.body;
+
+    // Validación de campos obligatorios
+    const camposFaltantes = {};
+    if (!id_servicio) camposFaltantes.id_servicio = 'requerido';
+    if (!id_trabajador) camposFaltantes.id_trabajador = 'requerido';
+
+  
+    if (Object.keys(camposFaltantes).length > 0) {
+      return res.status(400).json({
+        error: 'Faltan campos obligatorios',
+        camposFaltantes
+      });
+    }
     try {
       const result = await model.update(req.params.id, req.body);
       res.json({ message: 'Registro actualizado', result });

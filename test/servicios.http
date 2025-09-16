@@ -13,13 +13,13 @@ Content-Type: application/json
 ###
 POST http://localhost:8080/servicios
 Content-Type: application/json
-Authorization: Bearer TU_TOKEN_AQUI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwidXNlcm5hbWUiOiJqZW1pbWkiLCJyb2xlX2lkIjozLCJpYXQiOjE3NTgwMzk1MzgsImV4cCI6MTc1ODA2ODMzOH0.TI9BssaymoK1glp5bluy3AfaYB0FLCt47pjPxcpZO_c
 
 {
-  "nombre_servicio": "Corte de cabello premium",
-  "descripcion": "Incluye lavado y peinado",
-  "duracion": 45,
-  "precio": 25.00
+  "nombre_servicio": "Uñas Acrilicas sencillas",
+  "descripcion": "uñas acrilicas sencillas",
+  "duracion": 3,
+  "precio": 15.00
 }
 
 # Actualizar un servicio existente
