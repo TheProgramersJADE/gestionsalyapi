@@ -19,7 +19,7 @@ exports.verifyToken = (req, res, next) => {
 
 // Solo admin
 exports.onlyAdmin = (req, res, next) => {
-  if (req.user.role_id !== 1) {
+  if (req.user.role_id !== 3) {
     return res.status(403).json({ error: 'Acceso solo para admin' });
   }
   next();
@@ -35,7 +35,7 @@ exports.onlyTrabajador = (req, res, next) => {
 
 exports.onlyCliente = (req, res, next) => {
   // Verificar si el rol del usuario no es de cliente (ej: role_id = 3)
-  if (req.user.role_id !== 3) {
+  if (req.user.role_id !== 1) {
       return res.status(403).json({ error: 'Acceso solo para clientes' });
   }
   next();
