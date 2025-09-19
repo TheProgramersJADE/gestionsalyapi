@@ -1,20 +1,19 @@
 // Listar todos los servicios
 ###
-GET http://localhost:8080/servicios
+GET http://localhost:8081/servicios
 Content-Type: application/json
 
 // Obtener un servicio por ID
 ###
-GET http://localhost:8080/servicios/6
+GET http://localhost:8081/servicios/1
 Content-Type: application/json
 
 # Crear un nuevo servicio
 # Solo admin (token requerido)
 ###
-POST http://localhost:8080/servicios
+POST http://localhost:8081/servicios
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInVzZXJuYW1lIjoiS2VuaWEiLCJyb2xlX2lkIjozLCJpYXQiOjE3NTgxNjY5NjMsImV4cCI6MTc1ODE5NTc2M30.-a2BRPfPf0Uz7KAdR62IwmRNFpofeFsjos8lFi0u0JU
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwidXNlcm5hbWUiOiJqZW1pbWkiLCJyb2xlX2lkIjozLCJpYXQiOjE3NTgwMzk1MzgsImV4cCI6MTc1ODA2ODMzOH0.TI9BssaymoK1glp5bluy3AfaYB0FLCt47pjPxcpZO_c
-
 {
   "nombre_servicio": "Uñas Acrilicas sencillas",
   "descripcion": "uñas acrilicas sencillas",
@@ -25,20 +24,20 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwidXNlcm5hb
 # Actualizar un servicio existente
 # Solo admin (token requerido)
 ###
-PUT http://localhost:8080/servicios/1
+PUT http://localhost:8081/servicios/1
 Content-Type: application/json
-Authorization: Bearer TU_TOKEN_AQUI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInVzZXJuYW1lIjoiS2VuaWEiLCJyb2xlX2lkIjozLCJpYXQiOjE3NTgxNjY5NjMsImV4cCI6MTc1ODE5NTc2M30.-a2BRPfPf0Uz7KAdR62IwmRNFpofeFsjos8lFi0u0JU
 
 {
   "nombre_servicio": "Corte de cabello premium actualizado",
   "descripcion": "Incluye lavado, corte y peinado",
-  "duracion": 50,
+  "duracion": 65,
   "precio": 30.00
 }
 
 # Eliminar un servicio
 # Solo admin (token requerido)
 ###
-DELETE http://localhost:8080/servicios/1
+DELETE http://localhost:8081/servicios/1
 Content-Type: application/json
-Authorization: Bearer TU_TOKEN_AQUI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInVzZXJuYW1lIjoiS2VuaWEiLCJyb2xlX2lkIjozLCJpYXQiOjE3NTgxNjY5NjMsImV4cCI6MTc1ODE5NTc2M30.-a2BRPfPf0Uz7KAdR62IwmRNFpofeFsjos8lFi0u0JU

@@ -1,16 +1,16 @@
 ### Listar todas las reseñas
-GET http://localhost:8080/resennas
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseUZsb3JlcyIsInJvbGVfaWQiOjIsImlhdCI6MTc1Nzg5MTA0MCwiZXhwIjoxNzU3OTE5ODQwfQ.NzesdsMdP6I0hBk7C06Jl1V_kM0Zh0o6X0znlljt9tg
+GET http://localhost:8081/resennas
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInVzZXJuYW1lIjoiS2VuaWEiLCJyb2xlX2lkIjozLCJpYXQiOjE3NTgxNjY5NjMsImV4cCI6MTc1ODE5NTc2M30.-a2BRPfPf0Uz7KAdR62IwmRNFpofeFsjos8lFi0u0JU
 Accept: application/json
 
 ### Obtener una reseña por ID
-GET http://localhost:8080/resennas/2
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseUZsb3JlcyIsInJvbGVfaWQiOjIsImlhdCI6MTc1Nzg5MTA0MCwiZXhwIjoxNzU3OTE5ODQwfQ.NzesdsMdP6I0hBk7C06Jl1V_kM0Zh0o6X0znlljt9tg
+GET http://localhost:8081/resennas/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInVzZXJuYW1lIjoiS2VuaWEiLCJyb2xlX2lkIjozLCJpYXQiOjE3NTgxNjY5NjMsImV4cCI6MTc1ODE5NTc2M30.-a2BRPfPf0Uz7KAdR62IwmRNFpofeFsjos8lFi0u0JU
 Accept: application/json
 
 ### Crear una nueva reseña
-POST http://localhost:8080/resennas
-Authorization: Bearer <TOKEN_CLIENTE>
+POST http://localhost:8081/resennas
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInVzZXJuYW1lIjoiS2VuaWEiLCJyb2xlX2lkIjozLCJpYXQiOjE3NTgxNjY5NjMsImV4cCI6MTc1ODE5NTc2M30.-a2BRPfPf0Uz7KAdR62IwmRNFpofeFsjos8lFi0u0JU
 Content-Type: application/json
 
 {
@@ -22,12 +22,12 @@ Content-Type: application/json
 }
 
 ### Actualizar una reseña
-PUT http://localhost:8080/resennas/1
-Authorization: Bearer <TOKEN_ADMIN>
+PUT http://localhost:8081/resennas/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInVzZXJuYW1lIjoiS2VuaWEiLCJyb2xlX2lkIjozLCJpYXQiOjE3NTgxNjY5NjMsImV4cCI6MTc1ODE5NTc2M30.-a2BRPfPf0Uz7KAdR62IwmRNFpofeFsjos8lFi0u0JU
 Content-Type: application/json
 
 {
-  "nombre_cliente": "Ana Looopez",
+  "nombre_cliente": "Ana Looopezz",
   "nombre_trabajador": "Maria Gomez",
   "calificacion": 4,
   "comentario": "El servicio fue bueno, pero la espera fue un poco larga.",
@@ -35,5 +35,5 @@ Content-Type: application/json
 }
 
 ### Eliminar una reseña
-DELETE http://localhost:8080/resennas/2
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseUZsb3JlcyIsInJvbGVfaWQiOjIsImlhdCI6MTc1Nzg5MTA0MCwiZXhwIjoxNzU3OTE5ODQwfQ.NzesdsMdP6I0hBk7C06Jl1V_kM0Zh0o6X0znlljt9tg
+DELETE http://localhost:8081/resennas/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInVzZXJuYW1lIjoiS2VuaWEiLCJyb2xlX2lkIjozLCJpYXQiOjE3NTgxNjY5NjMsImV4cCI6MTc1ODE5NTc2M30.-a2BRPfPf0Uz7KAdR62IwmRNFpofeFsjos8lFi0u0JU

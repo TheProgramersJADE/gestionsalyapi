@@ -10,7 +10,7 @@ const { pool } = require('./src/models/mysql');
 require('dotenv').config();
 
 const app = express();
-const port = parseInt(process.env.PORT) || process.argv[3] || 8080;
+const port = parseInt(process.env.PORT) || process.argv[3] || 8081;
 
 //Middleware para recibir JSON
 app.use(express.json()); 

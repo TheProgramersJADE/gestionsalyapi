@@ -5,7 +5,7 @@ const { verifyToken, onlyCliente, onlyTrabajador, onlyAdmin } = require('../midd
 
 router.get('/',verifyToken, onlyAdmin, controller.index);       // Listar todas las citas
 router.get('/:id',verifyToken, onlyAdmin, controller.show);     // Obtener una cita por ID
-router.post('/',verifyToken, onlyCliente, controller.store);      // Crear una nueva cita
+router.post('/',verifyToken, onlyAdmin, onlyCliente, controller.store);      // Crear una nueva cita
 router.put('/:id',verifyToken, onlyTrabajador, controller.update);   // Actualizar una cita
 router.delete('/:id',verifyToken, onlyCliente, controller.destroy); // Eliminar una cita
 

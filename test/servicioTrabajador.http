@@ -1,20 +1,20 @@
 # Pruebas Servicio-Trabajador
 # GET todos (Admin ve todo, Trabajador solo los suyos)
-GET http://localhost:8080/servicio-trabajador
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwidXNlcm5hbWUiOiJqZW1pbWkiLCJyb2xlX2lkIjozLCJpYXQiOjE3NTgwMzk1MzgsImV4cCI6MTc1ODA2ODMzOH0.TI9BssaymoK1glp5bluy3AfaYB0FLCt47pjPxcpZO_c
+GET http://localhost:8081/servicio-trabajador
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInVzZXJuYW1lIjoiS2VuaWEiLCJyb2xlX2lkIjozLCJpYXQiOjE3NTgxNjY5NjMsImV4cCI6MTc1ODE5NTc2M30.-a2BRPfPf0Uz7KAdR62IwmRNFpofeFsjos8lFi0u0JU
 Accept: application/json
 
 ###
 # GET por ID
-GET http://localhost:8080/servicio-trabajador/5
+GET http://localhost:8081/servicio-trabajador/5
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseUZsb3JlcyIsInJvbGVfaWQiOjIsImlhdCI6MTc1Nzg5MTA0MCwiZXhwIjoxNzU3OTE5ODQwfQ.NzesdsMdP6I0hBk7C06Jl1V_kM0Zh0o6X0znlljt9tg
 Accept: application/json
 
 ###
 # POST crear un registro de Servicio-Trabajador
 # (Solo trabajador puede usarse, se asigna el servicio a sí mismo)
-POST http://localhost:8080/servicio-trabajador
-Authorization: Bearer <TOKEN_TRABAJADOR>
+POST http://localhost:8081/servicio-trabajador
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInVzZXJuYW1lIjoiS2VuaWEiLCJyb2xlX2lkIjozLCJpYXQiOjE3NTgxNjY5NjMsImV4cCI6MTc1ODE5NTc2M30.-a2BRPfPf0Uz7KAdR62IwmRNFpofeFsjos8lFi0u0JU
 Content-Type: application/json
 
 {
@@ -23,8 +23,8 @@ Content-Type: application/json
 
 ###
 # PUT actualizar (Solo Admin)
-PUT http://localhost:8080/servicio-trabajador/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwidXNlcm5hbWUiOiJqZW1pbWkiLCJyb2xlX2lkIjozLCJpYXQiOjE3NTgwMzk1MzgsImV4cCI6MTc1ODA2ODMzOH0.TI9BssaymoK1glp5bluy3AfaYB0FLCt47pjPxcpZO_c
+PUT http://localhost:8081/servicio-trabajador/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInVzZXJuYW1lIjoiS2VuaWEiLCJyb2xlX2lkIjozLCJpYXQiOjE3NTgxNjY5NjMsImV4cCI6MTc1ODE5NTc2M30.-a2BRPfPf0Uz7KAdR62IwmRNFpofeFsjos8lFi0u0JU
 Content-Type: application/json
 
 {
@@ -34,5 +34,5 @@ Content-Type: application/json
 
 ###
 # DELETE eliminar (Solo Admin)
-DELETE http://localhost:8080/servicio-trabajador/5
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseUZsb3JlcyIsInJvbGVfaWQiOjIsImlhdCI6MTc1Nzg5MTA0MCwiZXhwIjoxNzU3OTE5ODQwfQ.NzesdsMdP6I0hBk7C06Jl1V_kM0Zh0o6X0znlljt9tg
+DELETE http://localhost:8081/servicio-trabajador/5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInVzZXJuYW1lIjoiS2VuaWEiLCJyb2xlX2lkIjozLCJpYXQiOjE3NTgxNjY5NjMsImV4cCI6MTc1ODE5NTc2M30.-a2BRPfPf0Uz7KAdR62IwmRNFpofeFsjos8lFi0u0JU
