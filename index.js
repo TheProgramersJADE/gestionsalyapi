@@ -1,3 +1,6 @@
+const swaggerUi = require('swagger-ui-express');
+const swaggerFile = require('./swagger_output.json');
+
 const express = require('express');
 const path = require('path');
 require('dotenv').config();
@@ -11,6 +14,12 @@ require('dotenv').config();
 
 const app = express();
 const port = parseInt(process.env.PORT) || process.argv[3] || 8081;
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
+
+app.listen(3000, () => {
+    console.log('Servidor corriendo en http://localhost:8081');
+});
 
 //Middleware para recibir JSON
 app.use(express.json()); 
