@@ -36,7 +36,7 @@ describe('servicioController.store', () => {
 
     await servicioController.store(req, res);
 
-    // 🧾 Mostrar datos enviados y recibidos
+    //Mostrar datos enviados y recibidos
     console.log('\n [PRUEBA EXISTOSA AL CREAR 201: Servicio creado Exitosamente]');
     console.log('Datos enviados:', req.body);
     console.log('Respuesta del controlador:', res.json.mock.calls[0][0]);
