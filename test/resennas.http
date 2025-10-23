@@ -1,6 +1,6 @@
 ### Listar todas las reseñas
-GET http://localhost:8081/citas?page=2&limit=10
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsInVzZXJuYW1lIjoiaXZhbiIsInJvbGVfaWQiOjMsImlhdCI6MTc2MTIyOTkxMiwiZXhwIjoxNzYxMjU4NzEyfQ.PIx2RLeh28fkfaLHvunf-0MxS1dR58nED5dhv85BHl4
+GET http://localhost:8081/resennas?page=1&limit=10
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsInVzZXJuYW1lIjoiaXZhbiIsInJvbGVfaWQiOjMsImlhdCI6MTc2MTIzNTkwNywiZXhwIjoxNzYxMjY0NzA3fQ.ChTT8KssEYoZoqFoElH3Duxl3_WQeP8U7nOBE8R8GVA
 Accept: application/json
 
 ### Obtener una reseña por ID
