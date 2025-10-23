@@ -1,22 +1,25 @@
 const model = require('../models/servicioTrabajador');
 
 exports.index = async (req, res) => {
-    try {
-      let registros;
-  
-      if (req.user.role_id === 2) {
-        // Solo trabajador: mostramos sus registros
-        registros = await model.findByTrabajador(req.user.id);
-      } else {
-        // Admin: ve todos
-        registros = await model.findAll();
-      }
-  
-      res.json(registros);
-    } catch (error) {
-      res.status(500).json({ error: error.message });
+  try {
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    let registros;
+
+    if (req.user.role_id === 2) {
+      // Solo trabajador: muestra sus registros paginados
+      registros = await model.findByTrabajador(req.user.id, page, limit);
+    } else {
+      // Admin: ve todos los registros paginados
+      registros = await model.findAll(page, limit);
     }
-  };
+
+    res.json(registros);
+  } catch (error) {
+    console.error('Error al listar los servicios_trabajador:', error);
+    res.status(500).json({ error: 'Error al obtener los registros' });
+  }
+};
   
   exports.show = async (req, res) => {
     const registro = await model.findById(req.params.id);

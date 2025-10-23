@@ -9,11 +9,64 @@ async function store(data) {
 }
 
 // Obtener todos
-async function findAll() {
+async function findAll(page = 1, limit = 10) {
   const conn = await pool.getConnection();
-  const [rows] = await conn.query('SELECT * FROM servicios_trabajador');
-  conn.release();
-  return rows;
+  try {
+    const offset = (page - 1) * limit;
+
+    // Consulta paginada
+    const [rows] = await conn.query(
+      'SELECT * FROM servicios_trabajador LIMIT ? OFFSET ?',
+      [limit, offset]
+    );
+
+    // Total de registros
+    const [[{ total }]] = await conn.query(
+      'SELECT COUNT(*) AS total FROM servicios_trabajador'
+    );
+
+    const totalPages = Math.ceil(total / limit);
+
+    return {
+      page,
+      limit,
+      total,
+      totalPages,
+      data: rows
+    };
+  } finally {
+    conn.release();
+  }
+}
+
+// ✅ También agregamos paginación a la función por trabajador
+async function findByTrabajador(id_trabajador, page = 1, limit = 10) {
+  const conn = await pool.getConnection();
+  try {
+    const offset = (page - 1) * limit;
+
+    const [rows] = await conn.query(
+      'SELECT * FROM servicios_trabajador WHERE id_trabajador = ? LIMIT ? OFFSET ?',
+      [id_trabajador, limit, offset]
+    );
+
+    const [[{ total }]] = await conn.query(
+      'SELECT COUNT(*) AS total FROM servicios_trabajador WHERE id_trabajador = ?',
+      [id_trabajador]
+    );
+
+    const totalPages = Math.ceil(total / limit);
+
+    return {
+      page,
+      limit,
+      total,
+      totalPages,
+      data: rows
+    };
+  } finally {
+    conn.release();
+  }
 }
 
 // Obtener por ID

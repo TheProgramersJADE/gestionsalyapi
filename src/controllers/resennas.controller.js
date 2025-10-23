@@ -28,8 +28,20 @@ exports.store = async (req, res) => {
 };
 
 exports.index = async (req, res) => {
-  const resennas = await model.findAllResenas();
-  res.json(resennas);
+  try {
+    // Leer page y limit desde la URL
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+
+    // Llamar al modelo con la paginación
+    const resennas = await model.findAllResenas(page, limit);
+
+    // Devolver el resultado paginado
+    res.json(resennas);
+  } catch (error) {
+    console.error('Error al listar las reseñas:', error);
+    res.status(500).json({ error: 'Error al obtener las reseñas' });
+  }
 };
 
 exports.show = async (req, res) => {

@@ -1,8 +1,16 @@
 const model = require('../models/servicio');
 
 exports.index = async (req, res) => {
-  const servicios = await model.findAll();
-  res.json(servicios);
+  try {
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+
+    const servicios = await model.findAll(page, limit);
+    res.json(servicios);
+  } catch (error) {
+    console.error('Error al listar los servicios:', error);
+    res.status(500).json({ error: 'Error al obtener los servicios' });
+  }
 };
 
 exports.show = async (req, res) => {

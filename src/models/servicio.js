@@ -14,11 +14,27 @@ const store = async ({ nombre_servicio, descripcion, duracion, precio }) => {
   }
 };
 
-const findAll = async () => {
+const findAll = async (page = 1, limit = 10) => {
   const conn = await pool.getConnection();
   try {
-    const [rows] = await conn.query('SELECT * FROM servicios');
-    return rows;
+    const offset = (page - 1) * limit;
+
+    // Consulta con LIMIT y OFFSET
+    const [rows] = await conn.query('SELECT * FROM servicios LIMIT ? OFFSET ?', [limit, offset]);
+
+    // Obtener el total de registros
+    const [[{ total }]] = await conn.query('SELECT COUNT(*) AS total FROM servicios');
+
+    const totalPages = Math.ceil(total / limit);
+
+    // Retornar la información con metadatos de paginación
+    return {
+      page,
+      limit,
+      total,
+      totalPages,
+      data: rows
+    };
   } finally {
     conn.release();
   }

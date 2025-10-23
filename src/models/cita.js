@@ -15,17 +15,31 @@ const storeCita = async ({ nombre_cliente, telefono_cliente, fecha_hora, nombre_
   }
 };
 
-// Obtener todas las citas
-const findAllCitas = async () => {
+// Obtener todas las citas con paginación
+const findAllCitas = async (page = 1, limit = 10) => {
   const conn = await pool.getConnection();
   try {
-    const [rows] = await conn.query('SELECT * FROM citas');
-    return rows;
+    const offset = (page - 1) * limit;
+
+    // Consulta principal (con LIMIT y OFFSET)
+    const [rows] = await conn.query('SELECT * FROM citas LIMIT ? OFFSET ?', [limit, offset]);
+
+    // Obtener el total de registros
+    const [[{ total }]] = await conn.query('SELECT COUNT(*) AS total FROM citas');
+
+    const totalPages = Math.ceil(total / limit);
+
+    return {
+      page,
+      limit,
+      total,
+      totalPages,
+      data: rows
+    };
   } finally {
     conn.release();
   }
 };
-
 // Obtener una cita por su ID
 const findCitaById = async (id) => {
   const conn = await pool.getConnection();

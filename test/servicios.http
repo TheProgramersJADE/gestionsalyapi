@@ -1,6 +1,6 @@
 // Listar todos los servicios
 ###
-GET http://localhost:8081/servicios
+GET http://localhost:8081/servicios?page=1&limit=10
 Content-Type: application/json
 
 // Obtener un servicio por ID

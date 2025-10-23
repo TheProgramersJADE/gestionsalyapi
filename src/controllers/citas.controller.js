@@ -36,8 +36,20 @@ exports.store = async (req, res) => {
 // ... el resto de tu código de controlador
 
 exports.index = async (req, res) => {
-  const citas = await model.findAllCitas();
-  res.json(citas);
+  try {
+    // Obtener los parámetros page y limit de la URL, con valores por defecto
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+
+    // Llamar al modelo pasando paginación
+    const citas = await model.findAllCitas(page, limit);
+
+    // Responder con el resultado paginado
+    res.json(citas);
+  } catch (error) {
+    console.error('Error al listar las citas:', error);
+    res.status(500).json({ error: 'Error al obtener las citas' });
+  }
 };
 
 exports.show = async (req, res) => {

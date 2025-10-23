@@ -1,7 +1,7 @@
 # Pruebas Servicio-Trabajador
 # GET todos (Admin ve todo, Trabajador solo los suyos)
-GET http://localhost:8081/servicio-trabajador
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInVzZXJuYW1lIjoiS2VuaWEiLCJyb2xlX2lkIjozLCJpYXQiOjE3NTgxNjY5NjMsImV4cCI6MTc1ODE5NTc2M30.-a2BRPfPf0Uz7KAdR62IwmRNFpofeFsjos8lFi0u0JU
+GET http://localhost:8081/servicio-trabajador?page=1&limit=10
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsInVzZXJuYW1lIjoiaXZhbiIsInJvbGVfaWQiOjMsImlhdCI6MTc2MTIyOTkxMiwiZXhwIjoxNzYxMjU4NzEyfQ.PIx2RLeh28fkfaLHvunf-0MxS1dR58nED5dhv85BHl4
 Accept: application/json
 
 ###

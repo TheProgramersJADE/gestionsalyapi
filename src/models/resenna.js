@@ -16,15 +16,36 @@ const storeResena = async ({ nombre_cliente, nombre_trabajador, calificacion, co
   }
 };
 
-// Obtener todas las reseñas
-const findAllResenas = async () => {
+
+// Obtener todas las reseñas con paginación
+const findAllResenas = async (page = 1, limit = 10) => {
   const conn = await pool.getConnection();
   try {
-    const [rows] = await conn.query('SELECT * FROM resennas');
-    return rows;
+    const offset = (page - 1) * limit;
+
+    // Consulta principal (limit + offset)
+    const [rows] = await conn.query('SELECT * FROM resennas LIMIT ? OFFSET ?', [limit, offset]);
+
+    // Consulta para obtener el total de registros
+    const [[{ total }]] = await conn.query('SELECT COUNT(*) AS total FROM resennas');
+
+    const totalPages = Math.ceil(total / limit);
+
+    return {
+      page,
+      limit,
+      total,
+      totalPages,
+      data: rows
+    };
   } finally {
     conn.release();
   }
+};
+
+module.exports = {
+  findAllResenas,
+  // ... otras funciones si las tienes (findResenaById, storeResena, etc.)
 };
 
 // Obtener una reseña por su ID
